@@ -1,0 +1,8 @@
+*.class
+*.java~
+ivy/
+lib/
+build/
+.classpath
+.project
+.settings

@@ -1,2 +1,2 @@
-External APIs wrapper service
+External data wrapper service
 ============================

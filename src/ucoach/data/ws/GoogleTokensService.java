@@ -67,9 +67,9 @@ public class GoogleTokensService
      * @return
      *     returns GoogleTokensInterface
      */
-    @WebEndpoint(name = "GoogleTokensImplPort")
-    public GoogleTokensInterface getGoogleTokensImplPort() {
-        return super.getPort(new QName("http://ws.data.ucoach/", "GoogleTokensImplPort"), GoogleTokensInterface.class);
+    @WebEndpoint(name = "GoogleTokensServicePort")
+    public GoogleTokensInterface getGoogleTokensServicePort() {
+        return super.getPort(new QName("http://ws.data.ucoach/", "GoogleTokensServicePort"), GoogleTokensInterface.class);
     }
 
     /**
@@ -79,9 +79,9 @@ public class GoogleTokensService
      * @return
      *     returns GoogleTokensInterface
      */
-    @WebEndpoint(name = "GoogleTokensImplPort")
-    public GoogleTokensInterface getGoogleTokensImplPort(WebServiceFeature... features) {
-        return super.getPort(new QName("http://ws.data.ucoach/", "GoogleTokensImplPort"), GoogleTokensInterface.class, features);
+    @WebEndpoint(name = "GoogleTokensServicePort")
+    public GoogleTokensInterface getGoogleTokensServicePort(WebServiceFeature... features) {
+        return super.getPort(new QName("http://ws.data.ucoach/", "GoogleTokensServicePort"), GoogleTokensInterface.class, features);
     }
 
     private static URL __getWsdlLocation() {

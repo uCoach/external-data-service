@@ -1,13 +1,24 @@
-package ucoach.data;
+package ucoach.data.client;
 
-import ucoach.data.Authentication;
 import javax.xml.ws.BindingProvider;
 
+import ucoach.data.client.Authentication;
 import ucoach.data.ws.GoogleTokens;
 import ucoach.data.ws.GoogleTokensInterface;
 import ucoach.data.ws.GoogleTokensService;
 
-public class Client {
+public class GoogleTokensClient {
+
+	GoogleTokensInterface googleTokens;
+
+	public GoogleTokensClient() {
+		// Get service
+		GoogleTokensService service = new GoogleTokensService();
+		googleTokens = service.getGoogleTokensServicePort();
+		
+		// Authenticate request
+		Authentication.authenticateRequest((BindingProvider)googleTokens);
+	}
 
 	/**
 	 * Method to create new google tokens for given user
@@ -18,15 +29,8 @@ public class Client {
 	public boolean newGoogleTokens(String userId, String accessToken, String refreshToken) {
 
 		try {
-			// Get service
-			GoogleTokensService service = new GoogleTokensService();
-			GoogleTokensInterface gooleTokens = service.getGoogleTokensImplPort();
-			
-			// Authenticate request
-			Authentication.authenticateRequest((BindingProvider)gooleTokens);
-	
 			// Set new tokens
-			GoogleTokens token = gooleTokens.setTokens(Integer.parseInt(userId), accessToken, refreshToken);
+			GoogleTokens token = googleTokens.setTokens(Integer.parseInt(userId), accessToken, refreshToken);
 			if (token == null) {
 				return false;
 			}

@@ -1,7 +1,5 @@
 package ucoach.google.endpoint;
 
-import ucoach.data.Client;
-
 import java.io.IOException;
 import java.util.Collections;
 
@@ -27,6 +25,10 @@ import com.google.api.client.googleapis.auth.oauth2.GoogleAuthorizationCodeFlow;
 import com.google.api.client.http.javanet.NetHttpTransport;
 import com.google.api.client.json.jackson2.JacksonFactory;
 import com.google.api.services.fitness.FitnessScopes;
+
+import ucoach.data.client.GoogleTokensClient;
+import ucoach.data.client.UserClient;
+import ucoach.data.ws.User;
 
 @Path("/authorization")
 public class Authorization {
@@ -102,6 +104,16 @@ public class Authorization {
       return Response.status(400).entity(json.toString()).build();
 		}
 
+		// Check if user exists
+		boolean exists = userExists(userId);
+		if (!exists) {
+			JSONObject json = new JSONObject();
+			System.out.println("User not found");
+  		json.put("status", 404).put("message", "User not found");
+      return Response.status(404).entity(json.toString()).build();
+		}
+
+		// Initialize AuthorizationCodeFlow
 		flow = initialiazeFlow();
 		
 		// Load credential
@@ -144,9 +156,25 @@ public class Authorization {
 		String accessToken = credential.getAccessToken();
 		String refreshToken = credential.getRefreshToken();
 		
-		// User client service to store new tokens
-		Client client = new Client();
+		// Use client service to store new tokens
+		GoogleTokensClient client = new GoogleTokensClient();
 		return client.newGoogleTokens(userId, accessToken, refreshToken);
+	}
+
+	/**
+	 * Helper method to check if a user exists
+	 * @param userId
+	 * @return
+	 */
+	private boolean userExists(String userId) {
+		UserClient client = new UserClient();
+
+		User user = client.getUser(userId);
+		if (user == null) {
+			return false;
+		}
+		
+		return true;
 	}
 
 	/**

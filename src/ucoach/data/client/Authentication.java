@@ -1,4 +1,4 @@
-package ucoach.data;
+package ucoach.data.client;
 
 import java.util.Collections;
 import java.util.HashMap;

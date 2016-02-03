@@ -2,7 +2,7 @@ package ucoach.data.client;
 
 import javax.xml.ws.BindingProvider;
 
-import ucoach.data.client.Authentication;
+import ucoach.data.client.Authorization;
 import ucoach.data.ws.GoogleTokens;
 import ucoach.data.ws.GoogleTokensInterface;
 import ucoach.data.ws.GoogleTokensService;
@@ -16,8 +16,8 @@ public class GoogleTokensClient {
 		GoogleTokensService service = new GoogleTokensService();
 		googleTokens = service.getGoogleTokensServicePort();
 		
-		// Authenticate request
-		Authentication.authenticateRequest((BindingProvider)googleTokens);
+		// Authorize request
+		Authorization.authorizeRequest((BindingProvider)googleTokens);
 	}
 
 	/**

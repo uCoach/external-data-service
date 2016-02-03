@@ -2,7 +2,7 @@ package ucoach.data.client;
 
 import javax.xml.ws.BindingProvider;
 
-import ucoach.data.client.Authentication;
+import ucoach.data.client.Authorization;
 import ucoach.data.ws.User;
 import ucoach.data.ws.UserInterface;
 import ucoach.data.ws.UserService;
@@ -16,8 +16,8 @@ public class UserClient {
 		UserService service = new UserService();
 		userInterface = service.getUserServicePort();
 		
-		// Authenticate request
-		Authentication.authenticateRequest((BindingProvider)userInterface);
+		// Authorize request
+		Authorization.authorizeRequest((BindingProvider)userInterface);
 	}
 
 	/**

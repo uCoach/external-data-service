@@ -10,7 +10,7 @@ import javax.xml.ws.handler.MessageContext;
 
 public class Authentication {
 
-	private static final String AUTHENTICATION_KEY = "default_authentication_key";
+	private static final String AUTHORIZATION_KEY = "default_authentication_key";
 	
 	/**
 	 * Authenticate request with authentication key
@@ -22,14 +22,14 @@ public class Authentication {
 		Map<String, Object> reqContext = provider.getRequestContext();
 		
 		// Get valid authentication key from Environment
-        String validAuthKey = AUTHENTICATION_KEY;
-        if (String.valueOf(System.getenv("AUTHENTICATION_KEY")) != "null"){
-        	validAuthKey = String.valueOf(System.getenv("AUTHENTICATION_KEY"));
-        }
+    String validAuthKey = AUTHORIZATION_KEY;
+    if (String.valueOf(System.getenv("AUTHORIZATION_KEY")) != "null"){
+    	validAuthKey = String.valueOf(System.getenv("AUTHORIZATION_KEY"));
+    }
 
-        // Add authentication header
+    // Add authentication header
 		Map<String, List<String>> headers = new HashMap<String, List<String>>();
-        headers.put("AuthenticationKey", Collections.singletonList(validAuthKey));
-        reqContext.put(MessageContext.HTTP_REQUEST_HEADERS, headers);
+    headers.put("Authorization", Collections.singletonList(validAuthKey));
+    reqContext.put(MessageContext.HTTP_REQUEST_HEADERS, headers);
 	}
 }

@@ -29,6 +29,7 @@ import com.google.api.services.fitness.FitnessScopes;
 import ucoach.data.client.GoogleTokensClient;
 import ucoach.data.client.UserClient;
 import ucoach.data.ws.User;
+import ucoach.data.ws.GoogleTokens;
 
 @Path("/authorization")
 public class Authorization {
@@ -36,6 +37,7 @@ public class Authorization {
   @Context
   UriInfo uriInfo;
 
+  public static String TOKEN_TYPE = "Bearer";
 	private String clientId = "google_client_id";
   private String clientSecret = "google_client_secret";
   private String callbackUrl = "/authorization";
@@ -54,7 +56,7 @@ public class Authorization {
 
 		// Build JSON response object
 		JSONObject json = new JSONObject();
-		
+
 		// Check parameters
 		if (error != null) {
 			System.out.println("Access denied from the user");
@@ -116,14 +118,14 @@ public class Authorization {
 		// Initialize AuthorizationCodeFlow
 		flow = initialiazeFlow();
 		
-		// Load credential
-    Credential credential = flow.loadCredential(userId);
-    if (credential != null) {
-    	System.out.println("User already authorized");
+		// Check if user has already authorized the service
+    boolean hasAuthorized = hasAuthorized(userId); 
+    if (hasAuthorized) {
+    	System.out.println("User has already authorized");
     	
     	// Build and return success response
     	JSONObject json = new JSONObject();
-  		json.put("status", 200).put("message", "User already authorized");
+  		json.put("status", 200).put("message", "User has already authorized");
     	return Response.ok(json.toString()).build();
     }
 
@@ -146,6 +148,25 @@ public class Authorization {
 	}
 	
 	/**
+	 * Helper method to check if user has already authorized and if we have a token
+	 * @param userId
+	 * @return
+	 * @throws IOException
+	 */
+	private boolean hasAuthorized(String userId) throws IOException {
+		Credential credential = flow.loadCredential(userId);
+		if (credential != null) return true;
+		
+		// This is needed because the loadCredential always return null
+		// TO DO: understand why loadCredential doesn't work properly
+		GoogleTokensClient client = new GoogleTokensClient();
+		GoogleTokens tokens = client.getGoogleTokensByUser(userId);
+		if (tokens != null) return true;
+
+		return false;
+	}
+
+	/**
 	 * Helper method to store tokens in internal database using ucoach.data.Client
 	 * @param credential
 	 * @param userId
@@ -153,7 +174,7 @@ public class Authorization {
 	private boolean storeCredential(Credential credential, String userId) {
 		
 		// Get tokens
-		String accessToken = credential.getAccessToken();
+		String accessToken = TOKEN_TYPE + " " + credential.getAccessToken();
 		String refreshToken = credential.getRefreshToken();
 		
 		// Use client service to store new tokens
@@ -191,8 +212,4 @@ public class Authorization {
 		clientSecret = String.valueOf(System.getenv("GOOGLE_CLIENT_SECRET"));
 	}
 }
-
-
-
-
 

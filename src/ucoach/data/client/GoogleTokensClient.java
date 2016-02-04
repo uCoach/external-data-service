@@ -42,4 +42,21 @@ public class GoogleTokensClient {
 		
 		return true;
 	}
+	
+	/**
+	 * Method to get google tokens for given user
+	 * @param userId
+	 * @param accessToken
+	 * @param refreshToken
+	 */
+	public GoogleTokens getGoogleTokensByUser(String userId) {
+
+		try {
+			return googleTokens.getTokens(Integer.parseInt(userId));
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}		
+	}
 }

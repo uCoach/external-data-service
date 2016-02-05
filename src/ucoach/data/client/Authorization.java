@@ -23,8 +23,8 @@ public class Authorization {
 		
 		// Get valid authorization key from Environment
     String validAuthKey = AUTHORIZATION_KEY;
-    if (String.valueOf(System.getenv("AUTHORIZATION_KEY")) != "null"){
-    	validAuthKey = String.valueOf(System.getenv("AUTHORIZATION_KEY"));
+    if (String.valueOf(System.getenv("INTERNAL_DATA_AUTH_KEY")) != "null"){
+    	validAuthKey = String.valueOf(System.getenv("INTERNAL_DATA_AUTH_KEY"));
     }
 
     // Add authorization header

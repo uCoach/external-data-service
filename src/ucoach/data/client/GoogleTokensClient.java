@@ -26,21 +26,16 @@ public class GoogleTokensClient {
 	 * @param accessToken
 	 * @param refreshToken
 	 */
-	public boolean newGoogleTokens(String userId, String accessToken, String refreshToken) {
+	public GoogleTokens newGoogleTokens(String userId, String accessToken, String refreshToken) {
 
 		try {
 			// Set new tokens
-			GoogleTokens token = googleTokens.setTokens(Integer.parseInt(userId), accessToken, refreshToken);
-			if (token == null) {
-				return false;
-			}
+			return googleTokens.setTokens(Integer.parseInt(userId), accessToken, refreshToken);
 
 		} catch (Exception e) {
 			e.printStackTrace();
-			return false;
-		}
-		
-		return true;
+			return null;
+		}	
 	}
 	
 	/**
@@ -58,5 +53,22 @@ public class GoogleTokensClient {
 			e.printStackTrace();
 			return null;
 		}		
+	}
+
+	/**
+	 * Method to update tokens with new access token
+	 * @param userId
+	 * @param accessToken
+	 * @return
+	 */
+	public GoogleTokens updateGoogleTokens(String userId, String accessToken) {
+
+		try {
+			return googleTokens.updateTokens(Integer.parseInt(userId), accessToken);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
 	}
 }

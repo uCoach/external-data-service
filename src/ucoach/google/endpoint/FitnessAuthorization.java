@@ -1,6 +1,10 @@
 package ucoach.google.endpoint;
 
+import ucoach.google.util.Authorization;
+import ucoach.google.util.TokenHandler;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
 
 import javax.ws.rs.core.Response;
@@ -16,6 +20,7 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Context;
+import javax.ws.rs.core.HttpHeaders;
 import javax.ws.rs.core.MediaType;
 
 import com.google.api.client.auth.oauth2.AuthorizationCodeFlow;
@@ -32,27 +37,25 @@ import ucoach.data.ws.User;
 import ucoach.data.ws.GoogleTokens;
 
 @Path("/authorization")
-public class Authorization {
+public class FitnessAuthorization {
 	
   @Context
   UriInfo uriInfo;
 
-  public static String TOKEN_TYPE = "Bearer";
 	private String clientId = "google_client_id";
   private String clientSecret = "google_client_secret";
   private String callbackUrl = "/authorization";
   private AuthorizationCodeFlow flow;
+  private TokenHandler tokenHandler;
 
   @GET
   @Produces({MediaType.APPLICATION_JSON})
   public Response callback(
   		@QueryParam("code") String code,
-  		@QueryParam("state") String userId,
-  		@QueryParam("error") String error
+  		@QueryParam("state") String state,
+  		@QueryParam("error") String error,
+  		@Context HttpHeaders headers
   ) throws IOException {
-  	
-  	// Set dependencies
-  	setDependencies();
 
 		// Build JSON response object
 		JSONObject json = new JSONObject();
@@ -64,19 +67,40 @@ public class Authorization {
 			return Response.status(400).entity(json.toString()).build();
 		}
 
-		if (code == null || userId == null) {
-			json.put("status", 400).put("message", "missing parameters");
+		if (code == null || state == null || state.split("-").length < 2) {
+			json.put("status", 400).put("message", "missing/wrong parameters");
 			return Response.status(400).entity(json.toString()).build();
 		}
 		
+		// Parse state
+  	String userId =  state.split("-")[0];
+  	String authKey = state.split("-")[1];
+
+  	// Validate authorization key
+  	if(!Authorization.validateKey(authKey)){
+  		json.put("status", 401).put("message", "Not Authorized");
+  		
+      return Response.status(401).entity(json.toString()).build();
+		}
+
+  	// Check if user exists
+ 		User user = getUser(userId);
+ 		if (user == null) {
+ 			System.out.println("User not found");
+   		json.put("status", 404).put("message", "User not found");
+       return Response.status(404).entity(json.toString()).build();
+ 		}
+
+		// Set dependencies
+	  setDependencies();
+
 		// Request tokens
-		flow = initialiazeFlow();
 		TokenResponse tokenResponse = flow.newTokenRequest(code).setRedirectUri(callbackUrl).execute();
 		
 		// Get credential and store in internal database
 		System.out.println("Storing credential..");
 		Credential credential = flow.createAndStoreCredential(tokenResponse, userId);
-		boolean success = storeCredential(credential, userId);
+		boolean success = tokenHandler.storeCredential(credential, userId);
 		if (!success) {
 			System.out.println("Internal server error");
 			json.put("status", 500).put("message", "Internal server error");
@@ -86,16 +110,22 @@ public class Authorization {
 		System.out.println("User authorized");
 		json.put("status", 200).put("message", "User authorized");
 
+		// TO DO: redirect the user to proper page
 		return Response.ok(json.toString()).build();
   }
 
 	@GET
 	@Path("/user/{userId}")
   @Produces({MediaType.APPLICATION_JSON})
-  public Response authorizeUser(@PathParam("userId") String userId) throws IOException {
+  public Response authorizeUser(@PathParam("userId") String userId, @Context HttpHeaders headers)
+  		throws IOException {
 
-		// Set dependencies
-	  setDependencies();
+		if(!Authorization.validateRequest(headers)){
+  		JSONObject json = new JSONObject();
+  		json.put("status", 401).put("message", "Not Authorized");
+  		
+      return Response.status(401).entity(json.toString()).build();
+		}
 
 		System.out.println("Authorizing user...");
   	
@@ -107,16 +137,16 @@ public class Authorization {
 		}
 
 		// Check if user exists
-		boolean exists = userExists(userId);
-		if (!exists) {
+		User user = getUser(userId);
+		if (user == null) {
 			JSONObject json = new JSONObject();
 			System.out.println("User not found");
   		json.put("status", 404).put("message", "User not found");
       return Response.status(404).entity(json.toString()).build();
 		}
 
-		// Initialize AuthorizationCodeFlow
-		flow = initialiazeFlow();
+		// Set dependencies
+		setDependencies();
 		
 		// Check if user has already authorized the service
     boolean hasAuthorized = hasAuthorized(userId); 
@@ -130,9 +160,15 @@ public class Authorization {
     }
 
     // If not found: authorize new user
-    System.out.println("Redirect to authorization page");
-    String url = flow.newAuthorizationUrl().setState(userId).setRedirectUri(callbackUrl).build();
-    return Response.seeOther(UriBuilder.fromUri(url).build()).build();
+    System.out.println("Return authorization url location");
+
+    String state = userId + "-" + Authorization.getAuthorizationKey();
+    String url = flow.newAuthorizationUrl().setState(state).setRedirectUri(callbackUrl).build();
+
+    JSONObject json = new JSONObject();
+		json.put("status", 200).put("location", url);
+		return Response.ok(json.toString()).build();
+    //return Response.seeOther(UriBuilder.fromUri(url).build()).build();
   }
 	
 	/**
@@ -141,10 +177,18 @@ public class Authorization {
 	 */
 	private AuthorizationCodeFlow initialiazeFlow() {
 
+		// Defining scope collection
+		Collection<String> scopes = new ArrayList<String>();
+		scopes.add(FitnessScopes.FITNESS_ACTIVITY_READ);
+		scopes.add(FitnessScopes.FITNESS_LOCATION_READ);
+
 		return new GoogleAuthorizationCodeFlow.Builder(
-        new NetHttpTransport(), JacksonFactory.getDefaultInstance(),
-        clientId, clientSecret,
-        Collections.singleton(FitnessScopes.FITNESS_ACTIVITY_READ)).setAccessType("offline").build();
+      new NetHttpTransport(),
+      JacksonFactory.getDefaultInstance(),
+      clientId,
+      clientSecret,
+      scopes
+    ).setAccessType("offline").build();
 	}
 	
 	/**
@@ -167,42 +211,20 @@ public class Authorization {
 	}
 
 	/**
-	 * Helper method to store tokens in internal database using ucoach.data.Client
-	 * @param credential
-	 * @param userId
-	 */
-	private boolean storeCredential(Credential credential, String userId) {
-		
-		// Get tokens
-		String accessToken = TOKEN_TYPE + " " + credential.getAccessToken();
-		String refreshToken = credential.getRefreshToken();
-		
-		// Use client service to store new tokens
-		GoogleTokensClient client = new GoogleTokensClient();
-		return client.newGoogleTokens(userId, accessToken, refreshToken);
-	}
-
-	/**
-	 * Helper method to check if a user exists
+	 * Helper method to get user by id
 	 * @param userId
 	 * @return
 	 */
-	private boolean userExists(String userId) {
+	private User getUser(String userId) {
 		UserClient client = new UserClient();
 
-		User user = client.getUser(userId);
-		if (user == null) {
-			return false;
-		}
-		
-		return true;
+		return client.getUser(userId);
 	}
 
 	/**
 	 * Helper method to set needed dependencies
 	 */
 	private void setDependencies() {
-		
 		// Set callback URL
 		String baseUrl = UriBuilder.fromUri(uriInfo.getBaseUri()).build().toString();
 		callbackUrl = StringUtils.stripEnd(baseUrl, "/") + callbackUrl;
@@ -210,6 +232,11 @@ public class Authorization {
 		// Set google client id and secret
 		clientId = String.valueOf(System.getenv("GOOGLE_CLIENT_ID"));
 		clientSecret = String.valueOf(System.getenv("GOOGLE_CLIENT_SECRET"));
+		
+		// Initialize AuthorizationCodeFlow
+		flow = initialiazeFlow();
+
+		tokenHandler = new TokenHandler();
 	}
 }
 

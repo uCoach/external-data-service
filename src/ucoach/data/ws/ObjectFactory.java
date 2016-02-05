@@ -24,10 +24,8 @@ import javax.xml.namespace.QName;
 @XmlRegistry
 public class ObjectFactory {
 
-    private final static QName _SetTokensResponse_QNAME = new QName("http://ws.data.ucoach/", "setTokensResponse");
-    private final static QName _GetTokensResponse_QNAME = new QName("http://ws.data.ucoach/", "getTokensResponse");
-    private final static QName _SetTokens_QNAME = new QName("http://ws.data.ucoach/", "setTokens");
-    private final static QName _GetTokens_QNAME = new QName("http://ws.data.ucoach/", "getTokens");
+    private final static QName _GetHMTypesResponse_QNAME = new QName("http://ws.data.ucoach/", "getHMTypesResponse");
+    private final static QName _GetHMTypes_QNAME = new QName("http://ws.data.ucoach/", "getHMTypes");
 
     /**
      * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: ucoach.data.ws
@@ -37,87 +35,45 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link SetTokens }
+     * Create an instance of {@link GetHMTypesResponse }
      * 
      */
-    public SetTokens createSetTokens() {
-        return new SetTokens();
+    public GetHMTypesResponse createGetHMTypesResponse() {
+        return new GetHMTypesResponse();
     }
 
     /**
-     * Create an instance of {@link GetTokens }
+     * Create an instance of {@link GetHMTypes }
      * 
      */
-    public GetTokens createGetTokens() {
-        return new GetTokens();
+    public GetHMTypes createGetHMTypes() {
+        return new GetHMTypes();
     }
 
     /**
-     * Create an instance of {@link SetTokensResponse }
+     * Create an instance of {@link HmType }
      * 
      */
-    public SetTokensResponse createSetTokensResponse() {
-        return new SetTokensResponse();
+    public HmType createHmType() {
+        return new HmType();
     }
 
     /**
-     * Create an instance of {@link GetTokensResponse }
+     * Create an instance of {@link JAXBElement }{@code <}{@link GetHMTypesResponse }{@code >}}
      * 
      */
-    public GetTokensResponse createGetTokensResponse() {
-        return new GetTokensResponse();
+    @XmlElementDecl(namespace = "http://ws.data.ucoach/", name = "getHMTypesResponse")
+    public JAXBElement<GetHMTypesResponse> createGetHMTypesResponse(GetHMTypesResponse value) {
+        return new JAXBElement<GetHMTypesResponse>(_GetHMTypesResponse_QNAME, GetHMTypesResponse.class, null, value);
     }
 
     /**
-     * Create an instance of {@link User }
+     * Create an instance of {@link JAXBElement }{@code <}{@link GetHMTypes }{@code >}}
      * 
      */
-    public User createUser() {
-        return new User();
-    }
-
-    /**
-     * Create an instance of {@link GoogleTokens }
-     * 
-     */
-    public GoogleTokens createGoogleTokens() {
-        return new GoogleTokens();
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link SetTokensResponse }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://ws.data.ucoach/", name = "setTokensResponse")
-    public JAXBElement<SetTokensResponse> createSetTokensResponse(SetTokensResponse value) {
-        return new JAXBElement<SetTokensResponse>(_SetTokensResponse_QNAME, SetTokensResponse.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link GetTokensResponse }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://ws.data.ucoach/", name = "getTokensResponse")
-    public JAXBElement<GetTokensResponse> createGetTokensResponse(GetTokensResponse value) {
-        return new JAXBElement<GetTokensResponse>(_GetTokensResponse_QNAME, GetTokensResponse.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link SetTokens }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://ws.data.ucoach/", name = "setTokens")
-    public JAXBElement<SetTokens> createSetTokens(SetTokens value) {
-        return new JAXBElement<SetTokens>(_SetTokens_QNAME, SetTokens.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link GetTokens }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://ws.data.ucoach/", name = "getTokens")
-    public JAXBElement<GetTokens> createGetTokens(GetTokens value) {
-        return new JAXBElement<GetTokens>(_GetTokens_QNAME, GetTokens.class, null, value);
+    @XmlElementDecl(namespace = "http://ws.data.ucoach/", name = "getHMTypes")
+    public JAXBElement<GetHMTypes> createGetHMTypes(GetHMTypes value) {
+        return new JAXBElement<GetHMTypes>(_GetHMTypes_QNAME, GetHMTypes.class, null, value);
     }
 
 }

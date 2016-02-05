@@ -76,7 +76,8 @@
         <dependency org="junit" name="junit-dep" rev="4.8.2"/>     
 
 		<dependency org="com.google.apis" name="google-api-services-fitness" rev="v1-rev15-1.21.0"/>
+		
+		<dependency org="joda-time" name="joda-time" rev="2.9.2"/>
 
-    </dependencies>
-	
+	</dependencies>
 </ivy-module>

@@ -17,7 +17,7 @@ import javax.xml.ws.WebServiceFeature;
  * Generated source version: 2.2
  * 
  */
-@WebServiceClient(name = "GoogleTokensService", targetNamespace = "http://ws.data.ucoach/", wsdlLocation = "http://192.168.29.64:6900/ws/google-tokens?wsdl")
+@WebServiceClient(name = "GoogleTokensService", targetNamespace = "http://ws.data.ucoach/", wsdlLocation = "http://192.168.137.82:6900/ws/google-tokens?wsdl")
 public class GoogleTokensService
     extends Service
 {
@@ -30,7 +30,7 @@ public class GoogleTokensService
         URL url = null;
         WebServiceException e = null;
         try {
-            url = new URL("http://192.168.29.64:6900/ws/google-tokens?wsdl");
+            url = new URL("http://192.168.137.82:6900/ws/google-tokens?wsdl");
         } catch (MalformedURLException ex) {
             e = new WebServiceException(ex);
         }
@@ -67,9 +67,9 @@ public class GoogleTokensService
      * @return
      *     returns GoogleTokensInterface
      */
-    @WebEndpoint(name = "GoogleTokensImplPort")
-    public GoogleTokensInterface getGoogleTokensImplPort() {
-        return super.getPort(new QName("http://ws.data.ucoach/", "GoogleTokensImplPort"), GoogleTokensInterface.class);
+    @WebEndpoint(name = "GoogleTokensServicePort")
+    public GoogleTokensInterface getGoogleTokensServicePort() {
+        return super.getPort(new QName("http://ws.data.ucoach/", "GoogleTokensServicePort"), GoogleTokensInterface.class);
     }
 
     /**
@@ -79,9 +79,9 @@ public class GoogleTokensService
      * @return
      *     returns GoogleTokensInterface
      */
-    @WebEndpoint(name = "GoogleTokensImplPort")
-    public GoogleTokensInterface getGoogleTokensImplPort(WebServiceFeature... features) {
-        return super.getPort(new QName("http://ws.data.ucoach/", "GoogleTokensImplPort"), GoogleTokensInterface.class, features);
+    @WebEndpoint(name = "GoogleTokensServicePort")
+    public GoogleTokensInterface getGoogleTokensServicePort(WebServiceFeature... features) {
+        return super.getPort(new QName("http://ws.data.ucoach/", "GoogleTokensServicePort"), GoogleTokensInterface.class, features);
     }
 
     private static URL __getWsdlLocation() {

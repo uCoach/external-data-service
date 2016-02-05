@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-    <project name="ucoach.external-services-api" default="install" basedir="." xmlns:ivy="antlib:org.apache.ivy.ant">
+    <project name="uCoach-external-data-service" default="run.all" basedir="." xmlns:ivy="antlib:org.apache.ivy.ant">
         <property name="ivy.install.version" value="2.4.0-rc1" />
         <property name="ivy.jar.dir" value="${basedir}/ivy" />
         <property name="ivy.jar.file" value="${ivy.jar.dir}/ivy.jar" />
@@ -72,9 +72,9 @@
             </copy>
         </target>
 
-        <target name="run" depends="install">
-            <echo message="app start ucoach.App in ${build.dir}" />
-            <java classname="ucoach.App" classpath="${build.dir}" fork="true">
+        <target name="run.google">
+            <echo message="app start ucoach.google.App in ${build.dir}" />
+            <java classname="ucoach.google.App" classpath="${build.dir}" fork="true">
                 <arg value="$JAVA_OPTS  -cp" />
                 <classpath>
                     <path location="build" />
@@ -86,17 +86,7 @@
             </java>
         </target>
     	
-    	<target name="test" depends="install">
-            <echo message="app start ucoach.data.Test in ${build.dir}" />
-            <java classname="ucoach.data.Test" classpath="${build.dir}" fork="true">
-                <arg value="$JAVA_OPTS  -cp" />
-                <classpath>
-                    <path location="build" />
-                    <fileset dir="WebContent/WEB-INF/lib">
-                        <include name="**/*.jar" />
-                        <include name="*.jar" />
-                    </fileset>
-                </classpath>
-            </java>
-        </target>
+    	<target name="run.all" depends="install, run.google">
+    	    <echo message="Starting google-tokens endpoint" />
+    	</target>
     </project>

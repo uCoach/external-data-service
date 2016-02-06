@@ -18,7 +18,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="date" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/>
+ *         &lt;element name="createdDate" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/>
  *         &lt;element name="hmType" type="{http://ws.data.ucoach/}hmType" minOccurs="0"/>
  *         &lt;element name="id" type="{http://www.w3.org/2001/XMLSchema}int"/>
  *         &lt;element name="value" type="{http://www.w3.org/2001/XMLSchema}float" minOccurs="0"/>
@@ -32,7 +32,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "healthMeasure", propOrder = {
-    "date",
+    "createdDate",
     "hmType",
     "id",
     "value"
@@ -40,33 +40,33 @@ import javax.xml.datatype.XMLGregorianCalendar;
 public class HealthMeasure {
 
     @XmlSchemaType(name = "dateTime")
-    protected XMLGregorianCalendar date;
+    protected XMLGregorianCalendar createdDate;
     protected HmType hmType;
     protected int id;
     protected Float value;
 
     /**
-     * Recupera il valore della proprietà date.
+     * Recupera il valore della proprietà createdDate.
      * 
      * @return
      *     possible object is
      *     {@link XMLGregorianCalendar }
      *     
      */
-    public XMLGregorianCalendar getDate() {
-        return date;
+    public XMLGregorianCalendar getCreatedDate() {
+        return createdDate;
     }
 
     /**
-     * Imposta il valore della proprietà date.
+     * Imposta il valore della proprietà createdDate.
      * 
      * @param value
      *     allowed object is
      *     {@link XMLGregorianCalendar }
      *     
      */
-    public void setDate(XMLGregorianCalendar value) {
-        this.date = value;
+    public void setCreatedDate(XMLGregorianCalendar value) {
+        this.createdDate = value;
     }
 
     /**

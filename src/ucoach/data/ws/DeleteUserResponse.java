@@ -7,12 +7,12 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Classe Java per getHMTypes complex type.
+ * <p>Classe Java per deleteUserResponse complex type.
  * 
  * <p>Il seguente frammento di schema specifica il contenuto previsto contenuto in questa classe.
  * 
  * <pre>
- * &lt;complexType name="getHMTypes">
+ * &lt;complexType name="deleteUserResponse">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
@@ -25,8 +25,8 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "getHMTypes")
-public class GetHMTypes {
+@XmlType(name = "deleteUserResponse")
+public class DeleteUserResponse {
 
 
 }

@@ -7,6 +7,7 @@ import javax.jws.WebResult;
 import javax.jws.WebService;
 import javax.xml.bind.annotation.XmlSeeAlso;
 import javax.xml.ws.Action;
+import javax.xml.ws.Holder;
 import javax.xml.ws.RequestWrapper;
 import javax.xml.ws.ResponseWrapper;
 
@@ -23,6 +24,45 @@ import javax.xml.ws.ResponseWrapper;
 })
 public interface UserInterface {
 
+
+    /**
+     * 
+     * @param user
+     */
+    @WebMethod
+    @RequestWrapper(localName = "createUser", targetNamespace = "http://ws.data.ucoach/", className = "ucoach.data.ws.CreateUser")
+    @ResponseWrapper(localName = "createUserResponse", targetNamespace = "http://ws.data.ucoach/", className = "ucoach.data.ws.CreateUserResponse")
+    @Action(input = "http://ws.data.ucoach/UserInterface/createUserRequest", output = "http://ws.data.ucoach/UserInterface/createUserResponse")
+    public void createUser(
+        @WebParam(name = "user", targetNamespace = "", mode = WebParam.Mode.INOUT)
+        Holder<User> user);
+
+    /**
+     * 
+     * @param user
+     * @return
+     *     returns ucoach.data.ws.User
+     */
+    @WebMethod
+    @WebResult(name = "updateUser", targetNamespace = "")
+    @RequestWrapper(localName = "updateUser", targetNamespace = "http://ws.data.ucoach/", className = "ucoach.data.ws.UpdateUser")
+    @ResponseWrapper(localName = "updateUserResponse", targetNamespace = "http://ws.data.ucoach/", className = "ucoach.data.ws.UpdateUserResponse")
+    @Action(input = "http://ws.data.ucoach/UserInterface/updateUserRequest", output = "http://ws.data.ucoach/UserInterface/updateUserResponse")
+    public User updateUser(
+        @WebParam(name = "user", targetNamespace = "")
+        User user);
+
+    /**
+     * 
+     * @param userId
+     */
+    @WebMethod
+    @RequestWrapper(localName = "deleteUser", targetNamespace = "http://ws.data.ucoach/", className = "ucoach.data.ws.DeleteUser")
+    @ResponseWrapper(localName = "deleteUserResponse", targetNamespace = "http://ws.data.ucoach/", className = "ucoach.data.ws.DeleteUserResponse")
+    @Action(input = "http://ws.data.ucoach/UserInterface/deleteUserRequest", output = "http://ws.data.ucoach/UserInterface/deleteUserResponse")
+    public void deleteUser(
+        @WebParam(name = "userId", targetNamespace = "")
+        int userId);
 
     /**
      * 

@@ -24,8 +24,14 @@ import javax.xml.namespace.QName;
 @XmlRegistry
 public class ObjectFactory {
 
-    private final static QName _GetHMTypesResponse_QNAME = new QName("http://ws.data.ucoach/", "getHMTypesResponse");
-    private final static QName _GetHMTypes_QNAME = new QName("http://ws.data.ucoach/", "getHMTypes");
+    private final static QName _CreateUser_QNAME = new QName("http://ws.data.ucoach/", "createUser");
+    private final static QName _UpdateUser_QNAME = new QName("http://ws.data.ucoach/", "updateUser");
+    private final static QName _DeleteUser_QNAME = new QName("http://ws.data.ucoach/", "deleteUser");
+    private final static QName _DeleteUserResponse_QNAME = new QName("http://ws.data.ucoach/", "deleteUserResponse");
+    private final static QName _UpdateUserResponse_QNAME = new QName("http://ws.data.ucoach/", "updateUserResponse");
+    private final static QName _GetUserResponse_QNAME = new QName("http://ws.data.ucoach/", "getUserResponse");
+    private final static QName _GetUser_QNAME = new QName("http://ws.data.ucoach/", "getUser");
+    private final static QName _CreateUserResponse_QNAME = new QName("http://ws.data.ucoach/", "createUserResponse");
 
     /**
      * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: ucoach.data.ws
@@ -35,19 +41,91 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link GetHMTypesResponse }
+     * Create an instance of {@link User }
      * 
      */
-    public GetHMTypesResponse createGetHMTypesResponse() {
-        return new GetHMTypesResponse();
+    public User createUser() {
+        return new User();
     }
 
     /**
-     * Create an instance of {@link GetHMTypes }
+     * Create an instance of {@link GetUserResponse }
      * 
      */
-    public GetHMTypes createGetHMTypes() {
-        return new GetHMTypes();
+    public GetUserResponse createGetUserResponse() {
+        return new GetUserResponse();
+    }
+
+    /**
+     * Create an instance of {@link CreateUserResponse }
+     * 
+     */
+    public CreateUserResponse createCreateUserResponse() {
+        return new CreateUserResponse();
+    }
+
+    /**
+     * Create an instance of {@link GetUser }
+     * 
+     */
+    public GetUser createGetUser() {
+        return new GetUser();
+    }
+
+    /**
+     * Create an instance of {@link DeleteUser }
+     * 
+     */
+    public DeleteUser createDeleteUser() {
+        return new DeleteUser();
+    }
+
+    /**
+     * Create an instance of {@link UpdateUser }
+     * 
+     */
+    public UpdateUser createUpdateUser() {
+        return new UpdateUser();
+    }
+
+    /**
+     * Create an instance of {@link CreateUser }
+     * 
+     */
+    public CreateUser createCreateUser() {
+        return new CreateUser();
+    }
+
+    /**
+     * Create an instance of {@link UpdateUserResponse }
+     * 
+     */
+    public UpdateUserResponse createUpdateUserResponse() {
+        return new UpdateUserResponse();
+    }
+
+    /**
+     * Create an instance of {@link DeleteUserResponse }
+     * 
+     */
+    public DeleteUserResponse createDeleteUserResponse() {
+        return new DeleteUserResponse();
+    }
+
+    /**
+     * Create an instance of {@link HealthMeasure }
+     * 
+     */
+    public HealthMeasure createHealthMeasure() {
+        return new HealthMeasure();
+    }
+
+    /**
+     * Create an instance of {@link Coach }
+     * 
+     */
+    public Coach createCoach() {
+        return new Coach();
     }
 
     /**
@@ -59,21 +137,83 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link GetHMTypesResponse }{@code >}}
+     * Create an instance of {@link User.CurrentHealthMeasures }
      * 
      */
-    @XmlElementDecl(namespace = "http://ws.data.ucoach/", name = "getHMTypesResponse")
-    public JAXBElement<GetHMTypesResponse> createGetHMTypesResponse(GetHMTypesResponse value) {
-        return new JAXBElement<GetHMTypesResponse>(_GetHMTypesResponse_QNAME, GetHMTypesResponse.class, null, value);
+    public User.CurrentHealthMeasures createUserCurrentHealthMeasures() {
+        return new User.CurrentHealthMeasures();
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link GetHMTypes }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link CreateUser }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://ws.data.ucoach/", name = "getHMTypes")
-    public JAXBElement<GetHMTypes> createGetHMTypes(GetHMTypes value) {
-        return new JAXBElement<GetHMTypes>(_GetHMTypes_QNAME, GetHMTypes.class, null, value);
+    @XmlElementDecl(namespace = "http://ws.data.ucoach/", name = "createUser")
+    public JAXBElement<CreateUser> createCreateUser(CreateUser value) {
+        return new JAXBElement<CreateUser>(_CreateUser_QNAME, CreateUser.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link UpdateUser }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://ws.data.ucoach/", name = "updateUser")
+    public JAXBElement<UpdateUser> createUpdateUser(UpdateUser value) {
+        return new JAXBElement<UpdateUser>(_UpdateUser_QNAME, UpdateUser.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link DeleteUser }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://ws.data.ucoach/", name = "deleteUser")
+    public JAXBElement<DeleteUser> createDeleteUser(DeleteUser value) {
+        return new JAXBElement<DeleteUser>(_DeleteUser_QNAME, DeleteUser.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link DeleteUserResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://ws.data.ucoach/", name = "deleteUserResponse")
+    public JAXBElement<DeleteUserResponse> createDeleteUserResponse(DeleteUserResponse value) {
+        return new JAXBElement<DeleteUserResponse>(_DeleteUserResponse_QNAME, DeleteUserResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link UpdateUserResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://ws.data.ucoach/", name = "updateUserResponse")
+    public JAXBElement<UpdateUserResponse> createUpdateUserResponse(UpdateUserResponse value) {
+        return new JAXBElement<UpdateUserResponse>(_UpdateUserResponse_QNAME, UpdateUserResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link GetUserResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://ws.data.ucoach/", name = "getUserResponse")
+    public JAXBElement<GetUserResponse> createGetUserResponse(GetUserResponse value) {
+        return new JAXBElement<GetUserResponse>(_GetUserResponse_QNAME, GetUserResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link GetUser }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://ws.data.ucoach/", name = "getUser")
+    public JAXBElement<GetUser> createGetUser(GetUser value) {
+        return new JAXBElement<GetUser>(_GetUser_QNAME, GetUser.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link CreateUserResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://ws.data.ucoach/", name = "createUserResponse")
+    public JAXBElement<CreateUserResponse> createCreateUserResponse(CreateUserResponse value) {
+        return new JAXBElement<CreateUserResponse>(_CreateUserResponse_QNAME, CreateUserResponse.class, null, value);
     }
 
 }

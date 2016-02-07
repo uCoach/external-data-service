@@ -186,7 +186,7 @@ public class FitnessAuthorization {
       clientId,
       clientSecret,
       scopes
-    ).setAccessType("offline").build();
+    ).setApprovalPrompt("force").setAccessType("offline").build();
 	}
 	
 	/**

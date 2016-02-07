@@ -9,9 +9,9 @@ import javax.xml.datatype.XMLGregorianCalendar;
 
 
 /**
- * <p>Classe Java per healthMeasure complex type.
+ * <p>Java class for healthMeasure complex type.
  * 
- * <p>Il seguente frammento di schema specifica il contenuto previsto contenuto in questa classe.
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="healthMeasure">
@@ -46,7 +46,7 @@ public class HealthMeasure {
     protected Float value;
 
     /**
-     * Recupera il valore della proprietà createdDate.
+     * Gets the value of the createdDate property.
      * 
      * @return
      *     possible object is
@@ -58,7 +58,7 @@ public class HealthMeasure {
     }
 
     /**
-     * Imposta il valore della proprietà createdDate.
+     * Sets the value of the createdDate property.
      * 
      * @param value
      *     allowed object is
@@ -70,7 +70,7 @@ public class HealthMeasure {
     }
 
     /**
-     * Recupera il valore della proprietà hmType.
+     * Gets the value of the hmType property.
      * 
      * @return
      *     possible object is
@@ -82,7 +82,7 @@ public class HealthMeasure {
     }
 
     /**
-     * Imposta il valore della proprietà hmType.
+     * Sets the value of the hmType property.
      * 
      * @param value
      *     allowed object is
@@ -94,7 +94,7 @@ public class HealthMeasure {
     }
 
     /**
-     * Recupera il valore della proprietà id.
+     * Gets the value of the id property.
      * 
      */
     public int getId() {
@@ -102,7 +102,7 @@ public class HealthMeasure {
     }
 
     /**
-     * Imposta il valore della proprietà id.
+     * Sets the value of the id property.
      * 
      */
     public void setId(int value) {
@@ -110,7 +110,7 @@ public class HealthMeasure {
     }
 
     /**
-     * Recupera il valore della proprietà value.
+     * Gets the value of the value property.
      * 
      * @return
      *     possible object is
@@ -122,7 +122,7 @@ public class HealthMeasure {
     }
 
     /**
-     * Imposta il valore della proprietà value.
+     * Sets the value of the value property.
      * 
      * @param value
      *     allowed object is

@@ -7,9 +7,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Classe Java per hmType complex type.
+ * <p>Java class for hmType complex type.
  * 
- * <p>Il seguente frammento di schema specifica il contenuto previsto contenuto in questa classe.
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="hmType">
@@ -40,7 +40,7 @@ public class HmType {
     protected String units;
 
     /**
-     * Recupera il valore della proprietà id.
+     * Gets the value of the id property.
      * 
      */
     public int getId() {
@@ -48,7 +48,7 @@ public class HmType {
     }
 
     /**
-     * Imposta il valore della proprietà id.
+     * Sets the value of the id property.
      * 
      */
     public void setId(int value) {
@@ -56,7 +56,7 @@ public class HmType {
     }
 
     /**
-     * Recupera il valore della proprietà name.
+     * Gets the value of the name property.
      * 
      * @return
      *     possible object is
@@ -68,7 +68,7 @@ public class HmType {
     }
 
     /**
-     * Imposta il valore della proprietà name.
+     * Sets the value of the name property.
      * 
      * @param value
      *     allowed object is
@@ -80,7 +80,7 @@ public class HmType {
     }
 
     /**
-     * Recupera il valore della proprietà units.
+     * Gets the value of the units property.
      * 
      * @return
      *     possible object is
@@ -92,7 +92,7 @@ public class HmType {
     }
 
     /**
-     * Imposta il valore della proprietà units.
+     * Sets the value of the units property.
      * 
      * @param value
      *     allowed object is

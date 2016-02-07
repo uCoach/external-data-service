@@ -7,9 +7,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Classe Java per deleteUser complex type.
+ * <p>Java class for deleteUser complex type.
  * 
- * <p>Il seguente frammento di schema specifica il contenuto previsto contenuto in questa classe.
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="deleteUser">
@@ -34,7 +34,7 @@ public class DeleteUser {
     protected int userId;
 
     /**
-     * Recupera il valore della proprietà userId.
+     * Gets the value of the userId property.
      * 
      */
     public int getUserId() {
@@ -42,7 +42,7 @@ public class DeleteUser {
     }
 
     /**
-     * Imposta il valore della proprietà userId.
+     * Sets the value of the userId property.
      * 
      */
     public void setUserId(int value) {

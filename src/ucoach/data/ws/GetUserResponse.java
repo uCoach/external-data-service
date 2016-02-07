@@ -7,9 +7,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Classe Java per getUserResponse complex type.
+ * <p>Java class for getUserResponse complex type.
  * 
- * <p>Il seguente frammento di schema specifica il contenuto previsto contenuto in questa classe.
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="getUserResponse">
@@ -34,7 +34,7 @@ public class GetUserResponse {
     protected User user;
 
     /**
-     * Recupera il valore della proprietà user.
+     * Gets the value of the user property.
      * 
      * @return
      *     possible object is
@@ -46,7 +46,7 @@ public class GetUserResponse {
     }
 
     /**
-     * Imposta il valore della proprietà user.
+     * Sets the value of the user property.
      * 
      * @param value
      *     allowed object is

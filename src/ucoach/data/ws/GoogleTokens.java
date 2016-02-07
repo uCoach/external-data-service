@@ -7,9 +7,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Classe Java per googleTokens complex type.
+ * <p>Java class for googleTokens complex type.
  * 
- * <p>Il seguente frammento di schema specifica il contenuto previsto contenuto in questa classe.
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="googleTokens">
@@ -43,7 +43,7 @@ public class GoogleTokens {
     protected User user;
 
     /**
-     * Recupera il valore della proprietà accessToken.
+     * Gets the value of the accessToken property.
      * 
      * @return
      *     possible object is
@@ -55,7 +55,7 @@ public class GoogleTokens {
     }
 
     /**
-     * Imposta il valore della proprietà accessToken.
+     * Sets the value of the accessToken property.
      * 
      * @param value
      *     allowed object is
@@ -67,7 +67,7 @@ public class GoogleTokens {
     }
 
     /**
-     * Recupera il valore della proprietà id.
+     * Gets the value of the id property.
      * 
      */
     public int getId() {
@@ -75,7 +75,7 @@ public class GoogleTokens {
     }
 
     /**
-     * Imposta il valore della proprietà id.
+     * Sets the value of the id property.
      * 
      */
     public void setId(int value) {
@@ -83,7 +83,7 @@ public class GoogleTokens {
     }
 
     /**
-     * Recupera il valore della proprietà refreshToken.
+     * Gets the value of the refreshToken property.
      * 
      * @return
      *     possible object is
@@ -95,7 +95,7 @@ public class GoogleTokens {
     }
 
     /**
-     * Imposta il valore della proprietà refreshToken.
+     * Sets the value of the refreshToken property.
      * 
      * @param value
      *     allowed object is
@@ -107,7 +107,7 @@ public class GoogleTokens {
     }
 
     /**
-     * Recupera il valore della proprietà user.
+     * Gets the value of the user property.
      * 
      * @return
      *     possible object is
@@ -119,7 +119,7 @@ public class GoogleTokens {
     }
 
     /**
-     * Imposta il valore della proprietà user.
+     * Sets the value of the user property.
      * 
      * @param value
      *     allowed object is

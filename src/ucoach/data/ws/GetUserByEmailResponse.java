@@ -7,9 +7,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Classe Java per getUserByEmailResponse complex type.
+ * <p>Java class for getUserByEmailResponse complex type.
  * 
- * <p>Il seguente frammento di schema specifica il contenuto previsto contenuto in questa classe.
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="getUserByEmailResponse">
@@ -34,7 +34,7 @@ public class GetUserByEmailResponse {
     protected User userByEmail;
 
     /**
-     * Recupera il valore della proprietà userByEmail.
+     * Gets the value of the userByEmail property.
      * 
      * @return
      *     possible object is
@@ -46,7 +46,7 @@ public class GetUserByEmailResponse {
     }
 
     /**
-     * Imposta il valore della proprietà userByEmail.
+     * Sets the value of the userByEmail property.
      * 
      * @param value
      *     allowed object is

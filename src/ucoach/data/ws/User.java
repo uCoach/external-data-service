@@ -11,9 +11,9 @@ import javax.xml.datatype.XMLGregorianCalendar;
 
 
 /**
- * <p>Classe Java per user complex type.
+ * <p>Java class for user complex type.
  * 
- * <p>Il seguente frammento di schema specifica il contenuto previsto contenuto in questa classe.
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="user">
@@ -73,7 +73,7 @@ public class User {
     protected Coach coach;
 
     /**
-     * Recupera il valore della proprietà id.
+     * Gets the value of the id property.
      * 
      */
     public int getId() {
@@ -81,7 +81,7 @@ public class User {
     }
 
     /**
-     * Imposta il valore della proprietà id.
+     * Sets the value of the id property.
      * 
      */
     public void setId(int value) {
@@ -89,7 +89,7 @@ public class User {
     }
 
     /**
-     * Recupera il valore della proprietà firstname.
+     * Gets the value of the firstname property.
      * 
      * @return
      *     possible object is
@@ -101,7 +101,7 @@ public class User {
     }
 
     /**
-     * Imposta il valore della proprietà firstname.
+     * Sets the value of the firstname property.
      * 
      * @param value
      *     allowed object is
@@ -113,7 +113,7 @@ public class User {
     }
 
     /**
-     * Recupera il valore della proprietà lastname.
+     * Gets the value of the lastname property.
      * 
      * @return
      *     possible object is
@@ -125,7 +125,7 @@ public class User {
     }
 
     /**
-     * Imposta il valore della proprietà lastname.
+     * Sets the value of the lastname property.
      * 
      * @param value
      *     allowed object is
@@ -137,7 +137,7 @@ public class User {
     }
 
     /**
-     * Recupera il valore della proprietà birthdate.
+     * Gets the value of the birthdate property.
      * 
      * @return
      *     possible object is
@@ -149,7 +149,7 @@ public class User {
     }
 
     /**
-     * Imposta il valore della proprietà birthdate.
+     * Sets the value of the birthdate property.
      * 
      * @param value
      *     allowed object is
@@ -161,7 +161,7 @@ public class User {
     }
 
     /**
-     * Recupera il valore della proprietà email.
+     * Gets the value of the email property.
      * 
      * @return
      *     possible object is
@@ -173,7 +173,7 @@ public class User {
     }
 
     /**
-     * Imposta il valore della proprietà email.
+     * Sets the value of the email property.
      * 
      * @param value
      *     allowed object is
@@ -185,7 +185,7 @@ public class User {
     }
 
     /**
-     * Recupera il valore della proprietà password.
+     * Gets the value of the password property.
      * 
      * @return
      *     possible object is
@@ -197,7 +197,7 @@ public class User {
     }
 
     /**
-     * Imposta il valore della proprietà password.
+     * Sets the value of the password property.
      * 
      * @param value
      *     allowed object is
@@ -209,7 +209,7 @@ public class User {
     }
 
     /**
-     * Recupera il valore della proprietà twitterUsername.
+     * Gets the value of the twitterUsername property.
      * 
      * @return
      *     possible object is
@@ -221,7 +221,7 @@ public class User {
     }
 
     /**
-     * Imposta il valore della proprietà twitterUsername.
+     * Sets the value of the twitterUsername property.
      * 
      * @param value
      *     allowed object is
@@ -233,7 +233,7 @@ public class User {
     }
 
     /**
-     * Recupera il valore della proprietà currentHealthMeasures.
+     * Gets the value of the currentHealthMeasures property.
      * 
      * @return
      *     possible object is
@@ -245,7 +245,7 @@ public class User {
     }
 
     /**
-     * Imposta il valore della proprietà currentHealthMeasures.
+     * Sets the value of the currentHealthMeasures property.
      * 
      * @param value
      *     allowed object is
@@ -257,7 +257,7 @@ public class User {
     }
 
     /**
-     * Recupera il valore della proprietà coach.
+     * Gets the value of the coach property.
      * 
      * @return
      *     possible object is
@@ -269,7 +269,7 @@ public class User {
     }
 
     /**
-     * Imposta il valore della proprietà coach.
+     * Sets the value of the coach property.
      * 
      * @param value
      *     allowed object is
@@ -282,9 +282,9 @@ public class User {
 
 
     /**
-     * <p>Classe Java per anonymous complex type.
+     * <p>Java class for anonymous complex type.
      * 
-     * <p>Il seguente frammento di schema specifica il contenuto previsto contenuto in questa classe.
+     * <p>The following schema fragment specifies the expected content contained within this class.
      * 
      * <pre>
      * &lt;complexType>

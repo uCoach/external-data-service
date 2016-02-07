@@ -9,9 +9,9 @@ import javax.xml.datatype.XMLGregorianCalendar;
 
 
 /**
- * <p>Classe Java per coach complex type.
+ * <p>Java class for coach complex type.
  * 
- * <p>Il seguente frammento di schema specifica il contenuto previsto contenuto in questa classe.
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="coach">
@@ -52,7 +52,7 @@ public class Coach {
     protected String password;
 
     /**
-     * Recupera il valore della proprietà id.
+     * Gets the value of the id property.
      * 
      */
     public int getId() {
@@ -60,7 +60,7 @@ public class Coach {
     }
 
     /**
-     * Imposta il valore della proprietà id.
+     * Sets the value of the id property.
      * 
      */
     public void setId(int value) {
@@ -68,7 +68,7 @@ public class Coach {
     }
 
     /**
-     * Recupera il valore della proprietà firstname.
+     * Gets the value of the firstname property.
      * 
      * @return
      *     possible object is
@@ -80,7 +80,7 @@ public class Coach {
     }
 
     /**
-     * Imposta il valore della proprietà firstname.
+     * Sets the value of the firstname property.
      * 
      * @param value
      *     allowed object is
@@ -92,7 +92,7 @@ public class Coach {
     }
 
     /**
-     * Recupera il valore della proprietà lastname.
+     * Gets the value of the lastname property.
      * 
      * @return
      *     possible object is
@@ -104,7 +104,7 @@ public class Coach {
     }
 
     /**
-     * Imposta il valore della proprietà lastname.
+     * Sets the value of the lastname property.
      * 
      * @param value
      *     allowed object is
@@ -116,7 +116,7 @@ public class Coach {
     }
 
     /**
-     * Recupera il valore della proprietà birthdate.
+     * Gets the value of the birthdate property.
      * 
      * @return
      *     possible object is
@@ -128,7 +128,7 @@ public class Coach {
     }
 
     /**
-     * Imposta il valore della proprietà birthdate.
+     * Sets the value of the birthdate property.
      * 
      * @param value
      *     allowed object is
@@ -140,7 +140,7 @@ public class Coach {
     }
 
     /**
-     * Recupera il valore della proprietà email.
+     * Gets the value of the email property.
      * 
      * @return
      *     possible object is
@@ -152,7 +152,7 @@ public class Coach {
     }
 
     /**
-     * Imposta il valore della proprietà email.
+     * Sets the value of the email property.
      * 
      * @param value
      *     allowed object is
@@ -164,7 +164,7 @@ public class Coach {
     }
 
     /**
-     * Recupera il valore della proprietà password.
+     * Gets the value of the password property.
      * 
      * @return
      *     possible object is
@@ -176,7 +176,7 @@ public class Coach {
     }
 
     /**
-     * Imposta il valore della proprietà password.
+     * Sets the value of the password property.
      * 
      * @param value
      *     allowed object is

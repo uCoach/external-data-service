@@ -7,9 +7,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Classe Java per setTokens complex type.
+ * <p>Java class for setTokens complex type.
  * 
- * <p>Il seguente frammento di schema specifica il contenuto previsto contenuto in questa classe.
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="setTokens">
@@ -40,7 +40,7 @@ public class SetTokens {
     protected String refreshToken;
 
     /**
-     * Recupera il valore della proprietà userId.
+     * Gets the value of the userId property.
      * 
      */
     public int getUserId() {
@@ -48,7 +48,7 @@ public class SetTokens {
     }
 
     /**
-     * Imposta il valore della proprietà userId.
+     * Sets the value of the userId property.
      * 
      */
     public void setUserId(int value) {
@@ -56,7 +56,7 @@ public class SetTokens {
     }
 
     /**
-     * Recupera il valore della proprietà accessToken.
+     * Gets the value of the accessToken property.
      * 
      * @return
      *     possible object is
@@ -68,7 +68,7 @@ public class SetTokens {
     }
 
     /**
-     * Imposta il valore della proprietà accessToken.
+     * Sets the value of the accessToken property.
      * 
      * @param value
      *     allowed object is
@@ -80,7 +80,7 @@ public class SetTokens {
     }
 
     /**
-     * Recupera il valore della proprietà refreshToken.
+     * Gets the value of the refreshToken property.
      * 
      * @return
      *     possible object is
@@ -92,7 +92,7 @@ public class SetTokens {
     }
 
     /**
-     * Imposta il valore della proprietà refreshToken.
+     * Sets the value of the refreshToken property.
      * 
      * @param value
      *     allowed object is

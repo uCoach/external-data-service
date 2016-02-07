@@ -7,9 +7,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Classe Java per updateUserResponse complex type.
+ * <p>Java class for updateUserResponse complex type.
  * 
- * <p>Il seguente frammento di schema specifica il contenuto previsto contenuto in questa classe.
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="updateUserResponse">
@@ -34,7 +34,7 @@ public class UpdateUserResponse {
     protected User updateUser;
 
     /**
-     * Recupera il valore della proprietà updateUser.
+     * Gets the value of the updateUser property.
      * 
      * @return
      *     possible object is
@@ -46,7 +46,7 @@ public class UpdateUserResponse {
     }
 
     /**
-     * Imposta il valore della proprietà updateUser.
+     * Sets the value of the updateUser property.
      * 
      * @param value
      *     allowed object is

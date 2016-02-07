@@ -7,9 +7,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Classe Java per getTokensResponse complex type.
+ * <p>Java class for getTokensResponse complex type.
  * 
- * <p>Il seguente frammento di schema specifica il contenuto previsto contenuto in questa classe.
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="getTokensResponse">
@@ -34,7 +34,7 @@ public class GetTokensResponse {
     protected GoogleTokens tokens;
 
     /**
-     * Recupera il valore della proprietà tokens.
+     * Gets the value of the tokens property.
      * 
      * @return
      *     possible object is
@@ -46,7 +46,7 @@ public class GetTokensResponse {
     }
 
     /**
-     * Imposta il valore della proprietà tokens.
+     * Sets the value of the tokens property.
      * 
      * @param value
      *     allowed object is

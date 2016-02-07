@@ -20,8 +20,13 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
+ *         &lt;element name="id" type="{http://www.w3.org/2001/XMLSchema}int"/>
+ *         &lt;element name="firstname" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="lastname" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="birthdate" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/>
- *         &lt;element name="coach" type="{http://ws.data.ucoach/}coach" minOccurs="0"/>
+ *         &lt;element name="email" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="password" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="twitterUsername" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="currentHealthMeasures" minOccurs="0">
  *           &lt;complexType>
  *             &lt;complexContent>
@@ -33,11 +38,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *             &lt;/complexContent>
  *           &lt;/complexType>
  *         &lt;/element>
- *         &lt;element name="email" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         &lt;element name="firstname" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         &lt;element name="id" type="{http://www.w3.org/2001/XMLSchema}int"/>
- *         &lt;element name="lastname" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         &lt;element name="password" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="coach" type="{http://ws.data.ucoach/}coach" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -48,121 +49,43 @@ import javax.xml.datatype.XMLGregorianCalendar;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "user", propOrder = {
-    "birthdate",
-    "coach",
-    "currentHealthMeasures",
-    "email",
-    "firstname",
     "id",
+    "firstname",
     "lastname",
-    "password"
+    "birthdate",
+    "email",
+    "password",
+    "twitterUsername",
+    "currentHealthMeasures",
+    "coach"
 })
 public class User {
 
+    protected int id;
+    protected String firstname;
+    protected String lastname;
     @XmlSchemaType(name = "dateTime")
     protected XMLGregorianCalendar birthdate;
-    protected Coach coach;
-    protected User.CurrentHealthMeasures currentHealthMeasures;
     protected String email;
-    protected String firstname;
-    protected int id;
-    protected String lastname;
     protected String password;
+    protected String twitterUsername;
+    protected User.CurrentHealthMeasures currentHealthMeasures;
+    protected Coach coach;
 
     /**
-     * Recupera il valore della proprietà birthdate.
+     * Recupera il valore della proprietà id.
      * 
-     * @return
-     *     possible object is
-     *     {@link XMLGregorianCalendar }
-     *     
      */
-    public XMLGregorianCalendar getBirthdate() {
-        return birthdate;
+    public int getId() {
+        return id;
     }
 
     /**
-     * Imposta il valore della proprietà birthdate.
+     * Imposta il valore della proprietà id.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link XMLGregorianCalendar }
-     *     
      */
-    public void setBirthdate(XMLGregorianCalendar value) {
-        this.birthdate = value;
-    }
-
-    /**
-     * Recupera il valore della proprietà coach.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Coach }
-     *     
-     */
-    public Coach getCoach() {
-        return coach;
-    }
-
-    /**
-     * Imposta il valore della proprietà coach.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Coach }
-     *     
-     */
-    public void setCoach(Coach value) {
-        this.coach = value;
-    }
-
-    /**
-     * Recupera il valore della proprietà currentHealthMeasures.
-     * 
-     * @return
-     *     possible object is
-     *     {@link User.CurrentHealthMeasures }
-     *     
-     */
-    public User.CurrentHealthMeasures getCurrentHealthMeasures() {
-        return currentHealthMeasures;
-    }
-
-    /**
-     * Imposta il valore della proprietà currentHealthMeasures.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link User.CurrentHealthMeasures }
-     *     
-     */
-    public void setCurrentHealthMeasures(User.CurrentHealthMeasures value) {
-        this.currentHealthMeasures = value;
-    }
-
-    /**
-     * Recupera il valore della proprietà email.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getEmail() {
-        return email;
-    }
-
-    /**
-     * Imposta il valore della proprietà email.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setEmail(String value) {
-        this.email = value;
+    public void setId(int value) {
+        this.id = value;
     }
 
     /**
@@ -190,22 +113,6 @@ public class User {
     }
 
     /**
-     * Recupera il valore della proprietà id.
-     * 
-     */
-    public int getId() {
-        return id;
-    }
-
-    /**
-     * Imposta il valore della proprietà id.
-     * 
-     */
-    public void setId(int value) {
-        this.id = value;
-    }
-
-    /**
      * Recupera il valore della proprietà lastname.
      * 
      * @return
@@ -230,6 +137,54 @@ public class User {
     }
 
     /**
+     * Recupera il valore della proprietà birthdate.
+     * 
+     * @return
+     *     possible object is
+     *     {@link XMLGregorianCalendar }
+     *     
+     */
+    public XMLGregorianCalendar getBirthdate() {
+        return birthdate;
+    }
+
+    /**
+     * Imposta il valore della proprietà birthdate.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link XMLGregorianCalendar }
+     *     
+     */
+    public void setBirthdate(XMLGregorianCalendar value) {
+        this.birthdate = value;
+    }
+
+    /**
+     * Recupera il valore della proprietà email.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getEmail() {
+        return email;
+    }
+
+    /**
+     * Imposta il valore della proprietà email.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setEmail(String value) {
+        this.email = value;
+    }
+
+    /**
      * Recupera il valore della proprietà password.
      * 
      * @return
@@ -251,6 +206,78 @@ public class User {
      */
     public void setPassword(String value) {
         this.password = value;
+    }
+
+    /**
+     * Recupera il valore della proprietà twitterUsername.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getTwitterUsername() {
+        return twitterUsername;
+    }
+
+    /**
+     * Imposta il valore della proprietà twitterUsername.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setTwitterUsername(String value) {
+        this.twitterUsername = value;
+    }
+
+    /**
+     * Recupera il valore della proprietà currentHealthMeasures.
+     * 
+     * @return
+     *     possible object is
+     *     {@link User.CurrentHealthMeasures }
+     *     
+     */
+    public User.CurrentHealthMeasures getCurrentHealthMeasures() {
+        return currentHealthMeasures;
+    }
+
+    /**
+     * Imposta il valore della proprietà currentHealthMeasures.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link User.CurrentHealthMeasures }
+     *     
+     */
+    public void setCurrentHealthMeasures(User.CurrentHealthMeasures value) {
+        this.currentHealthMeasures = value;
+    }
+
+    /**
+     * Recupera il valore della proprietà coach.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Coach }
+     *     
+     */
+    public Coach getCoach() {
+        return coach;
+    }
+
+    /**
+     * Imposta il valore della proprietà coach.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Coach }
+     *     
+     */
+    public void setCoach(Coach value) {
+        this.coach = value;
     }
 
 

@@ -30,8 +30,10 @@ public class ObjectFactory {
     private final static QName _DeleteUserResponse_QNAME = new QName("http://ws.data.ucoach/", "deleteUserResponse");
     private final static QName _UpdateUserResponse_QNAME = new QName("http://ws.data.ucoach/", "updateUserResponse");
     private final static QName _GetUserResponse_QNAME = new QName("http://ws.data.ucoach/", "getUserResponse");
+    private final static QName _GetUserByEmail_QNAME = new QName("http://ws.data.ucoach/", "getUserByEmail");
     private final static QName _GetUser_QNAME = new QName("http://ws.data.ucoach/", "getUser");
     private final static QName _CreateUserResponse_QNAME = new QName("http://ws.data.ucoach/", "createUserResponse");
+    private final static QName _GetUserByEmailResponse_QNAME = new QName("http://ws.data.ucoach/", "getUserByEmailResponse");
 
     /**
      * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: ucoach.data.ws
@@ -49,6 +51,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link GetUserByEmail }
+     * 
+     */
+    public GetUserByEmail createGetUserByEmail() {
+        return new GetUserByEmail();
+    }
+
+    /**
      * Create an instance of {@link GetUserResponse }
      * 
      */
@@ -62,6 +72,14 @@ public class ObjectFactory {
      */
     public CreateUserResponse createCreateUserResponse() {
         return new CreateUserResponse();
+    }
+
+    /**
+     * Create an instance of {@link GetUserByEmailResponse }
+     * 
+     */
+    public GetUserByEmailResponse createGetUserByEmailResponse() {
+        return new GetUserByEmailResponse();
     }
 
     /**
@@ -199,6 +217,15 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link GetUserByEmail }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://ws.data.ucoach/", name = "getUserByEmail")
+    public JAXBElement<GetUserByEmail> createGetUserByEmail(GetUserByEmail value) {
+        return new JAXBElement<GetUserByEmail>(_GetUserByEmail_QNAME, GetUserByEmail.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link GetUser }{@code >}}
      * 
      */
@@ -214,6 +241,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://ws.data.ucoach/", name = "createUserResponse")
     public JAXBElement<CreateUserResponse> createCreateUserResponse(CreateUserResponse value) {
         return new JAXBElement<CreateUserResponse>(_CreateUserResponse_QNAME, CreateUserResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link GetUserByEmailResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://ws.data.ucoach/", name = "getUserByEmailResponse")
+    public JAXBElement<GetUserByEmailResponse> createGetUserByEmailResponse(GetUserByEmailResponse value) {
+        return new JAXBElement<GetUserByEmailResponse>(_GetUserByEmailResponse_QNAME, GetUserByEmailResponse.class, null, value);
     }
 
 }

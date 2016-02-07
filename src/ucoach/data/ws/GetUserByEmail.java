@@ -7,16 +7,16 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Classe Java per createUserResponse complex type.
+ * <p>Classe Java per getUserByEmail complex type.
  * 
  * <p>Il seguente frammento di schema specifica il contenuto previsto contenuto in questa classe.
  * 
  * <pre>
- * &lt;complexType name="createUserResponse">
+ * &lt;complexType name="getUserByEmail">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="createdUser" type="{http://ws.data.ucoach/}user" minOccurs="0"/>
+ *         &lt;element name="email" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -26,35 +26,35 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "createUserResponse", propOrder = {
-    "createdUser"
+@XmlType(name = "getUserByEmail", propOrder = {
+    "email"
 })
-public class CreateUserResponse {
+public class GetUserByEmail {
 
-    protected User createdUser;
+    protected String email;
 
     /**
-     * Recupera il valore della proprietà createdUser.
+     * Recupera il valore della proprietà email.
      * 
      * @return
      *     possible object is
-     *     {@link User }
+     *     {@link String }
      *     
      */
-    public User getCreatedUser() {
-        return createdUser;
+    public String getEmail() {
+        return email;
     }
 
     /**
-     * Imposta il valore della proprietà createdUser.
+     * Imposta il valore della proprietà email.
      * 
      * @param value
      *     allowed object is
-     *     {@link User }
+     *     {@link String }
      *     
      */
-    public void setCreatedUser(User value) {
-        this.createdUser = value;
+    public void setEmail(String value) {
+        this.email = value;
     }
 
 }

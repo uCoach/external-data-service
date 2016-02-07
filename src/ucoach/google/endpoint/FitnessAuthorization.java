@@ -5,7 +5,6 @@ import ucoach.google.util.TokenHandler;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Collections;
 
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriBuilder;
@@ -53,8 +52,7 @@ public class FitnessAuthorization {
   public Response callback(
   		@QueryParam("code") String code,
   		@QueryParam("state") String state,
-  		@QueryParam("error") String error,
-  		@Context HttpHeaders headers
+  		@QueryParam("error") String error
   ) throws IOException {
 
 		// Build JSON response object

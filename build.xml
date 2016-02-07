@@ -86,7 +86,7 @@
             </java>
         </target>
     	
-    	<target name="run.all" depends="install, run.google">
+    	<target name="run" depends="install, run.google">
     	    <echo message="Starting google-tokens endpoint" />
     	</target>
     </project>

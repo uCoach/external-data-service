@@ -110,6 +110,7 @@ public class FitnessAuthorization {
 
 		// TO DO: redirect the user to proper page
 		return Response.ok(json.toString()).build();
+		//return Response.seeOther(UriBuilder.fromUri(url).build()).build();
   }
 
 	@GET
@@ -166,7 +167,6 @@ public class FitnessAuthorization {
     JSONObject json = new JSONObject();
 		json.put("status", 200).put("location", url);
 		return Response.ok(json.toString()).build();
-    //return Response.seeOther(UriBuilder.fromUri(url).build()).build();
   }
 	
 	/**

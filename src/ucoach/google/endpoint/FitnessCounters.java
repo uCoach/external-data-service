@@ -63,8 +63,9 @@ public class FitnessCounters {
   public Response getUserActivities(@PathParam("userId") String userId, @Context HttpHeaders headers)
   		throws GeneralSecurityException, IOException {
 
+  	JSONObject json = new JSONObject();
+
   	if(!Authorization.validateRequest(headers)){
-  		JSONObject json = new JSONObject();
   		json.put("status", 401).put("message", "Not Authorized");
   		
       return Response.status(401).entity(json.toString()).build();
@@ -76,7 +77,6 @@ public class FitnessCounters {
 
 		// Check if userId is provided
 		if(userId == null || userId.trim().length() == 0) {
-			JSONObject json = new JSONObject();
   		json.put("status", 400).put("message", "UserId cannot be blank");
   		
       return Response.status(400).entity(json.toString()).build();
@@ -85,16 +85,14 @@ public class FitnessCounters {
 		// Check if user exists
 		User user = getUser(userId);
 		if (user == null) {
-			JSONObject json = new JSONObject();
 			System.out.println("User not found");
   		json.put("status", 404).put("message", "User not found");
       return Response.status(404).entity(json.toString()).build();
 		}		
-	
+
 		// Get (and check) google tokens
 		GoogleTokens googleTokens = getGoogleTokens(user);
 		if (googleTokens == null) {
-			JSONObject json = new JSONObject();
 			System.out.println("User hasn't authorize");
   		json.put("status", 400).put("message", "User hasn't authorize");
       return Response.status(400).entity(json.toString()).build();
@@ -157,7 +155,6 @@ public class FitnessCounters {
    	}
 
   	// Build JSON response object
-  	JSONObject json = new JSONObject();
   	json.put("steps", steps)
   		.put("calories", calories)
   		.put("distance", distance)
@@ -225,6 +222,8 @@ public class FitnessCounters {
 		
 		List<DataPoint> points = getDataPoints(datasets, dataSourceId, datasetId, credential, googleTokens);
 
+		if (points == null) return "";
+
   	// Sum all steps
   	int sum = 0;
   	for(Iterator<DataPoint> i = points.iterator(); i.hasNext(); ) {
@@ -258,6 +257,8 @@ public class FitnessCounters {
 		) throws IOException {
 		
 		List<DataPoint> points = getDataPoints(datasets, dataSourceId, datasetId, credential, googleTokens);
+
+		if (points == null) return "";
 
   	// Sum all steps
   	double sum = 0;

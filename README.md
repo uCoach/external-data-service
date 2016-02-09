@@ -1,4 +1,4 @@
-#External data sources service
+#External Data Service
 
 The External Data Service is a wrapper for external data sources APIs.
 

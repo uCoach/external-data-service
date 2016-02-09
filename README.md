@@ -6,7 +6,7 @@ The only external source implemented so far is Google-Fit API. In order to integ
 
 Once the user has authorized the application we store its google access and refresh tokens in our database (through direct SOAP calls to the external-data-service). After that we can call Google-Fit API (using the user access token) to get data about the user: steps, distance, calories.
 
-For more information and list of endpoints provided see the [Wiki](wiki)
+For more information and list of endpoints provided see the [Wiki](../../wiki)
 
 ###DEPENDENCIES
 

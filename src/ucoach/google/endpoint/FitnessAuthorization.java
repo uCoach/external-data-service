@@ -3,6 +3,7 @@ package ucoach.google.endpoint;
 import ucoach.google.util.Authorization;
 import ucoach.google.util.TokenHandler;
 import java.io.IOException;
+import java.net.URI;
 import java.util.ArrayList;
 import java.util.Collection;
 
@@ -46,7 +47,8 @@ public class FitnessAuthorization {
   private String callbackUrl = "/authorization";
   private AuthorizationCodeFlow flow;
   private TokenHandler tokenHandler;
-
+  private final String MY_PROFILE_PAGE = "http://ucoach-client.herokuapp.com/my_profile";
+  
   @GET
   @Produces({MediaType.APPLICATION_JSON})
   public Response callback(
@@ -55,19 +57,17 @@ public class FitnessAuthorization {
   		@QueryParam("error") String error
   ) throws IOException {
 
-		// Build JSON response object
-		JSONObject json = new JSONObject();
+  	URI errorURI = UriBuilder.fromUri(MY_PROFILE_PAGE).queryParam("google_state", "false").build();
+  	URI successURI = UriBuilder.fromUri(MY_PROFILE_PAGE).queryParam("google_state", "true").build();
 
 		// Check parameters
 		if (error != null) {
 			System.out.println("Access denied from the user");
-			json.put("status", 400).put("message", error);
-			return Response.status(400).entity(json.toString()).build();
+			return Response.seeOther(errorURI).build();
 		}
 
 		if (code == null || state == null || state.split("-").length < 2) {
-			json.put("status", 400).put("message", "missing/wrong parameters");
-			return Response.status(400).entity(json.toString()).build();
+			return Response.seeOther(errorURI).build();
 		}
 		
 		// Parse state
@@ -76,17 +76,14 @@ public class FitnessAuthorization {
 
   	// Validate authorization key
   	if(!Authorization.validateKey(authKey)){
-  		json.put("status", 401).put("message", "Not Authorized");
-  		
-      return Response.status(401).entity(json.toString()).build();
+  		return Response.seeOther(errorURI).build();
 		}
 
   	// Check if user exists
  		User user = getUser(userId);
  		if (user == null) {
  			System.out.println("User not found");
-   		json.put("status", 404).put("message", "User not found");
-       return Response.status(404).entity(json.toString()).build();
+ 			return Response.seeOther(errorURI).build();
  		}
 
 		// Set dependencies
@@ -101,16 +98,12 @@ public class FitnessAuthorization {
 		boolean success = tokenHandler.storeCredential(credential, userId);
 		if (!success) {
 			System.out.println("Internal server error");
-			json.put("status", 500).put("message", "Internal server error");
-			return Response.status(500).entity(json.toString()).build();
+			return Response.seeOther(errorURI).build();
 		}
 		
 		System.out.println("User authorized");
-		json.put("status", 200).put("message", "User authorized");
 
-		// TO DO: redirect the user to proper page
-		return Response.ok(json.toString()).build();
-		//return Response.seeOther(UriBuilder.fromUri(url).build()).build();
+		return Response.seeOther(successURI).build();
   }
 
 	@GET
